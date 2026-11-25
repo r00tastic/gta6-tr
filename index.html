@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="tr" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GTA VI · Türkçe Çeviri İlerlemesi</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237a5cff'/%3E%3Cstop offset='.55' stop-color='%23ff2e7e'/%3E%3Cstop offset='1' stop-color='%23ff8a3d'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='%23120c28'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Arial Black,sans-serif' font-size='28' font-weight='900' fill='url(%23g)'%3EVI%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  /* Vice City Gece Teması — Zengin Neon Palet */
+  body{
+    background:
+      radial-gradient(1100px 520px at 15% 10%, rgba(138,92,255,.26), transparent 62%),
+      radial-gradient(1000px 520px at 88% 18%, rgba(255,46,126,.24), transparent 62%),
+      radial-gradient(900px 460px at 50% 55%, rgba(255,120,60,.12), transparent 65%),
+      radial-gradient(1200px 560px at 50% 100%, rgba(122,92,255,.16), transparent 68%),
+      linear-gradient(180deg, #0c071b 0%, #090814 45%, #0b0718 100%);
+  }
+  .hero{
+    box-shadow: 0 30px 90px rgba(0,0,0,.65), 0 0 80px -20px rgba(255,46,126,.45);
+    border: 1px solid rgba(255,140,180,.22);
+  }
+  .hero h1{text-shadow: 0 10px 34px rgba(14,6,36,.75)}
+  .card, .effort{
+    background:
+      radial-gradient(600px 220px at 15% 0%, rgba(122,92,255,.16), transparent 70%),
+      radial-gradient(600px 240px at 90% 100%, rgba(255,46,126,.13), transparent 70%),
+      linear-gradient(180deg, rgba(28,22,52,.94), rgba(16,14,32,.96));
+    border: 1px solid rgba(255,255,255,.11);
+    box-shadow: 0 1px 0 rgba(255,255,255,.08) inset, 0 22px 55px rgba(4,2,14,.6);
+  }
+  .overall{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(700px 280px at 12% 0%, rgba(138,92,255,.28), transparent 68%),
+      radial-gradient(700px 300px at 88% 15%, rgba(255,46,126,.24), transparent 68%),
+      radial-gradient(600px 240px at 50% 100%, rgba(255,138,61,.16), transparent 70%),
+      linear-gradient(180deg, rgba(32,22,58,.96), rgba(17,13,34,.98));
+    border: 1px solid rgba(255,94,168,.38);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,.14) inset,
+      0 30px 80px rgba(4,2,16,.75),
+      0 0 75px -15px rgba(255,46,126,.42);
+  }
+  .overall::before{
+    content:"";position:absolute;left:8%;right:8%;top:0;height:2px;
+    background:linear-gradient(90deg,transparent,#7a5cff,#ff2e7e,#ff8a3d,transparent);
+    opacity:.85;
+  }
+  .effort:hover{
+    transform: translateY(-2px);
+    border-color: rgba(255,94,168,.5);
+    box-shadow: 0 24px 60px rgba(0,0,0,.6), 0 0 42px -10px rgba(255,46,126,.45);
+  }
+  .big-score{
+    background: linear-gradient(92deg, #b39aff 0%, #ff4d9b 48%, #ffb35c 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    filter: drop-shadow(0 8px 30px rgba(255,46,126,.42));
+  }
+  .kicker{color:#c9b8ff}
+
+  /* Hero animasyonlari */
+  .stars circle{animation: twinkle 3.6s ease-in-out infinite}
+  .stars .s2{animation-delay: -1.2s; animation-duration: 4.4s}
+  .stars .s3{animation-delay: -2.5s; animation-duration: 3.1s}
+  @keyframes twinkle{0%,100%{opacity:.85}50%{opacity:.22}}
+  .sun-halo{animation: sunpulse 5s ease-in-out infinite; transform-origin: 1150px 440px}
+  @keyframes sunpulse{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.07);opacity:1}}
+  .shimmer-sea rect{animation: seashimmer 3.2s ease-in-out infinite}
+  .shimmer-sea rect:nth-child(even){animation-delay:-1.6s}
+  @keyframes seashimmer{0%,100%{opacity:.85;transform:translateX(0)}50%{opacity:.45;transform:translateX(6px)}}
+  .palm-l{animation: swayL 7s ease-in-out infinite; transform-origin: 120px 720px}
+  .palm-r{animation: swayR 8s ease-in-out infinite; transform-origin: 1520px 720px}
+  @keyframes swayL{0%,100%{transform:rotate(0deg)}50%{transform:rotate(1.4deg)}}
+  @keyframes swayR{0%,100%{transform:rotate(0deg)}50%{transform:rotate(-1.4deg)}}
+
+  /* Hero sag kutu: gunes ustunde yuksek kontrastli koyu mor-cam + neon kenar */
+  .hero-side{min-width:0}
+  .countdown{
+    min-width:0;max-width:460px;padding:20px 22px 18px;
+    background:
+      radial-gradient(360px 160px at 15% 0%, rgba(138,92,255,.32), transparent 70%),
+      radial-gradient(340px 160px at 90% 100%, rgba(255,46,126,.28), transparent 70%),
+      linear-gradient(165deg, rgba(22,12,46,.88), rgba(14,8,32,.92));
+    border: 1.5px solid rgba(255,190,130,.55);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,.22) inset,
+      0 24px 60px rgba(8,3,24,.7),
+      0 0 50px -8px rgba(255,61,127,.55);
+    backdrop-filter: blur(18px) saturate(1.5);
+    -webkit-backdrop-filter: blur(18px) saturate(1.5);
+  }
+  .cd-label{color:#ffd9a8}
+  .cd-digits{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+  .cd-digits div{flex:1 1 auto;min-width:0;text-align:center}
+  .cd-digits span{
+    display:inline-block;padding:0 2px;
+    font-size:clamp(19px,1.95vw,25px);white-space:nowrap;letter-spacing:-.025em;
+    color:#fff4e6;
+    text-shadow:0 2px 12px rgba(255,90,140,.45);
+  }
+  .cd-digits i{flex:0 0 auto;font-size:18px;line-height:1;color:rgba(255,200,150,.55)}
+  .cd-digits small{font-size:10px;letter-spacing:.06em;color:rgba(255,230,205,.82)}
+  .cd-status{color:#fff}
+  .cd-status b{color:#7CFFB2}
+  .cd-foot{color:rgba(255,230,215,.82)}
+
+  /* Genel kart: sol skor + sag 4 istatistik kutusu yan yana (bos alan kalmasin) */
+  .overall-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(440px,1.05fr);gap:24px;align-items:end}
+  .ov-stats{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+  .ov-stat{
+    min-width:0;padding:14px 14px;
+    background:linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.025));
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:0 1px 0 rgba(255,255,255,.08) inset;
+  }
+  .ov-stat b{font-size:21px;white-space:nowrap}
+  .ov-stat:nth-child(1) b{color:#5ef2a8}
+  .ov-stat:nth-child(2) b{color:#ff7ab8}
+  .ov-stat:nth-child(3) b{color:#b79eff}
+  .ov-stat:nth-child(4) b{color:#ffc27a}
+  .mega-track, .bar-track{
+    background: rgba(8,6,20,.75);
+    border: 1px solid rgba(255,255,255,.1);
+    box-shadow: inset 0 2px 6px rgba(0,0,0,.6);
+  }
+  .mega-fill, .bar-fill{
+    box-shadow: 0 0 24px rgba(255,46,126,.55);
+  }
+
+  /* Mega bar ucunda parlayan nokta + siradaki milestone nabiz */
+  .mega-track{position:relative}
+  .mega-head{
+    position:absolute;top:50%;left:var(--p,0%);
+    width:14px;height:36px;border-radius:999px;
+    transform:translate(-50%,-50%);
+    background:#fff;
+    box-shadow:0 0 14px 3px #ff2e7e, 0 0 28px 6px rgba(255,138,61,.75);
+    pointer-events:none;transition:left 1.8s cubic-bezier(.2,.85,.2,1);
+  }
+  .mega-label.is-next .dot{
+    background:var(--pink);border:0;
+    box-shadow:0 0 0 0 rgba(255,46,126,.7);
+    animation:pulse 1.8s infinite;
+  }
+  .mega-label.is-next{color:var(--ink)}
+  .mega-label.is-next b{color:var(--orange)}
+
+  /* Bolumler satiri */
+  .sec-card{padding:24px 28px}
+  .sec-row + .sec-row{margin-top:24px}
+  .sec-meta{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:8px;flex-wrap:wrap}
+  .sec-meta b{font-size:15px;color:var(--ink)}
+  .sec-meta span{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .sec-row .bar{margin-top:0}
+
+  /* Yol haritasi: aktif kartta mini bar + parlayan kenar */
+  .effort.is-wip{border-color:rgba(255,138,61,.38)}
+  .effort.is-wip .e-rank{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .mini-bar{margin-top:12px;height:8px;border-radius:999px;background:var(--soft-2);overflow:hidden;position:relative}
+  .mini-bar i{display:block;height:100%;width:var(--p,0%);border-radius:inherit;background:var(--grad);transition:width 1.4s cubic-bezier(.2,.85,.2,1)}
+
+  /* Ceviriden Ornekler vitrini */
+  .sp-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .sp-card{
+    padding:18px 20px;border-radius:18px;
+    background:
+      radial-gradient(380px 140px at 0% 0%, rgba(138,92,255,.18), transparent 70%),
+      radial-gradient(380px 160px at 100% 100%, rgba(255,46,126,.14), transparent 70%),
+      linear-gradient(180deg, rgba(28,22,52,.94), rgba(16,13,32,.96));
+    border:1px solid rgba(255,255,255,.11);
+    box-shadow:0 1px 0 rgba(255,255,255,.07) inset, 0 16px 40px rgba(3,2,12,.5);
+    transition:transform .18s, border-color .18s, box-shadow .18s;
+  }
+  .sp-card:hover{
+    transform:translateY(-2px);
+    border-color:rgba(255,94,168,.5);
+    box-shadow:0 20px 50px rgba(0,0,0,.6), 0 0 34px -10px rgba(255,46,126,.4);
+  }
+  .sp-cat{
+    display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    padding:3px 10px;border-radius:999px;
+    background:linear-gradient(90deg, rgba(122,92,255,.28), rgba(255,46,126,.24));
+    border:1px solid rgba(255,140,200,.3);
+    color:#ffd6ec;margin-bottom:10px;
+  }
+  .sp-en{margin:0;font-size:13px;color:var(--muted)}
+  .sp-tr{margin:6px 0 0;font-size:15.5px;font-weight:700;color:var(--ink)}
+  .tok-o{font-style:normal;color:#ff9e5e;font-weight:700}
+  .tok-k{
+    display:inline-block;
+    font:800 11.5px/1 var(--display);
+    padding:4px 8px;margin:0 2px;border-radius:7px;
+    background:linear-gradient(180deg,#2a2d42,#191b2a);
+    color:#fff;border:1px solid rgba(255,255,255,.22);
+    box-shadow:0 2px 0 rgba(0,0,0,.55), 0 1px 0 rgba(255,255,255,.15) inset;
+    vertical-align:1px;letter-spacing:.03em;cursor:help;
+  }
+
+  @media(max-width:1020px){.overall-head{grid-template-columns:1fr}.ov-stats{grid-template-columns:repeat(2,minmax(0,1fr));width:100%}}
+  @media(max-width:760px){.sp-grid{grid-template-columns:1fr}}
+  @media(max-width:520px){.cd-digits span{font-size:19px}.sec-card{padding:18px}}
+
+  /* ===== WOW katmanı + mobil modernizasyon ===== */
+  /* Hero tek kolon (Genel doluluk kutusu kaldirildi) */
+  .hero-inner{grid-template-columns:1fr}
+  .hero-copy{max-width:900px}
+
+  .hero-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+  .hero-chips span{font-size:12px;font-weight:600;padding:5px 12px;border-radius:999px;
+    background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.26);color:#fff;
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+  .hero-chips span::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;
+    background:var(--grad);margin-right:7px;vertical-align:1px}
+
+  /* kartlarda yumuşak giriş animasyonu */
+  .reveal{opacity:0;transform:translateY(22px)}
+  .effort.reveal{animation:none}
+  .reveal.in{opacity:1;transform:none;transition:opacity .7s ease,transform .7s cubic-bezier(.2,.85,.2,1)}
+  .effort.reveal.in,.sp-card.reveal.in{transition-delay:calc(var(--i,0) * 60ms)}
+
+  /* genel kartta ince hareketli ışık halkası */
+  .overall::after{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;pointer-events:none;
+    background:conic-gradient(from 0deg,rgba(122,92,255,.0),rgba(122,92,255,.75),rgba(255,46,126,.75),rgba(255,138,61,.75),rgba(255,138,61,0));
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;opacity:.7;animation:spinring 9s linear infinite}
+  @keyframes spinring{to{transform:rotate(360deg)}}
+  @media (prefers-reduced-motion: reduce){.overall::after{animation:none}.reveal{opacity:1;transform:none}}
+
+  /* dokunmatiklerde basma geri bildirimi */
+  .effort,.sp-card{-webkit-tap-highlight-color:transparent}
+  @media (hover:none){.effort:hover,.sp-card:hover{transform:none}}
+
+  /* MOBİL */
+  @media(max-width:760px){
+    .nav-inner{height:56px;gap:12px}
+    .nav-updated{font-size:10.5px;opacity:.85;white-space:normal;text-align:right;line-height:1.3;max-width:130px}
+    .nav-updated::before{display:none}
+    .hero{min-height:auto;border-radius:20px;margin:6px 6px 0}
+    .hero-inner{padding:40px 0 58px;gap:22px}
+    .hero h1{font-size:clamp(32px,9.6vw,44px);max-width:none}
+    .answer{font-size:clamp(28px,8.6vw,38px)}
+    .lede{font-size:14.5px;margin-top:16px;max-width:100%}
+    .hero-chips{margin-top:16px}
+    .hero-chips span{font-size:11px;padding:4px 10px}
+    .countdown{padding:16px 16px 14px;border-radius:18px}
+    .cd-digits span{font-size:17px}
+    .cd-digits small{font-size:9px}
+    .cd-label{font-size:11px}
+    .cd-status,.cd-foot{font-size:12px}
+    .overall-wrap{margin-top:-40px}
+    .overall{padding:20px 16px;border-radius:20px}
+    .kicker{font-size:10.5px}
+    .big-score{font-size:clamp(54px,17vw,72px)}
+    .ov-leader{font-size:13px;margin-top:8px}
+    .ov-stats{gap:8px;margin-top:0}
+    .ov-stat{padding:10px 11px;border-radius:12px}
+    .ov-stat b{font-size:17px}
+    .ov-stat small{font-size:10.5px}
+    .mega-track{height:22px}
+    .mega-head{height:26px;width:11px}
+    .mega-labels{height:60px;margin-top:6px}
+    .mega-label{font-size:9.5px;white-space:normal;max-width:64px;line-height:1.2}
+    .mega-label b{display:none}
+    .section{margin-top:46px}
+    .section-head h2{font-size:clamp(22px,6.6vw,30px)}
+    .section-head .sub{font-size:13px}
+    .sec-card{padding:16px}
+    .sec-meta b{font-size:13.5px}
+    .sec-meta span{font-size:11.5px}
+    .effort{padding:16px 14px;border-radius:16px}
+    .e-top{gap:10px}
+    .e-title h3{font-size:16px}
+    .e-score b{font-size:24px}
+    .e-score small{font-size:10.5px}
+    .e-summary{font-size:13px}
+    .mini-bar{height:6px}
+    .sp-grid{gap:10px}
+    .sp-card{padding:14px 15px;border-radius:14px}
+    .sp-cat{font-size:10px;padding:2px 8px}
+    .sp-en{font-size:11.5px}
+    .sp-tr{font-size:13.5px;line-height:1.45}
+    .tok-k{font-size:10px;padding:3px 6px}
+    .footer{margin-top:54px}
+    .footer-inner{padding:26px 0 34px;gap:18px}
+    .footer p{font-size:12px}
+  }
+  @media(max-width:400px){
+    .ov-stats{grid-template-columns:1fr 1fr}
+    .ov-stat b{font-size:15.5px}
+    .cd-digits span{font-size:15px}
+    .mega-label{font-size:8.5px;max-width:52px}
+  }
+
+  /* ===== Kayan şerit: scroll ile kemer etkisi ===== */
+  .g6-band{
+    user-select:none;overflow-x:clip;overflow-y:hidden;
+    padding-block:clamp(26px,5vw,70px) 0;margin-top:26px;
+    view-timeline:--g6-band block;
+  }
+  .g6-band-row{
+    display:flex;width:max-content;white-space:nowrap;gap:.5em;margin:0;
+    font-family:var(--display);font-size:clamp(2.5rem,9.4vw,8.6rem);
+    font-weight:800;line-height:1.12;text-transform:uppercase;letter-spacing:.02em;
+    will-change:transform;padding-block:.2em .22em;
+  }
+  .g6-band-row span::after{
+    content:"✦";vertical-align:middle;color:var(--pink);
+    margin-left:.5em;font-size:.4em;-webkit-text-stroke:0;
+  }
+  .g6-band-a{
+    color:#0a0917;
+    -webkit-text-fill-color:#0a0917;
+    -webkit-text-stroke:max(1.5px,.018em) rgba(255,255,255,.55);
+    paint-order:stroke fill;
+    animation:linear both g6-band-a;animation-timeline:--g6-band;
+  }
+  .g6-band-b{
+    background:linear-gradient(90deg,#7a5cff,#ff2e7e 55%,#ff8a3d);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    opacity:.9;
+    animation:linear both g6-band-b;animation-timeline:--g6-band;
+  }
+  @keyframes g6-band-a{0%{transform:translate(2%)}to{transform:translate(-28%)}}
+  @keyframes g6-band-b{0%{transform:translate(-40%)}to{transform:translate(-8%)}}
+  /* Mobil/tablet: SVG yerine tam kaplayan, sicak gun batimi */
+  @media(max-width:900px){
+    .hero-illustration{display:none}
+    .hero-art{
+      background:
+        radial-gradient(78% 46% at 74% 20%, rgba(255,246,200,.98) 0%, rgba(255,196,110,.7) 18%, rgba(255,90,140,.35) 42%, rgba(255,61,127,0) 62%),
+        linear-gradient(180deg,#2a0b3d 0%,#5a1460 14%,#9c2478 28%,#d62a7f 44%,#ff5a6e 58%,#ff8a3d 70%,#ffc56e 82%,#0d0822 83%,#0d0822 100%);
+      background-size:cover;
+      background-position:center;
+    }
+    .hero-scrim{
+      background:linear-gradient(180deg, rgba(14,6,28,.16) 0%, rgba(14,6,28,.60) 100%);
+    }
+    body{
+      background:
+        radial-gradient(720px 380px at 82% 2%, rgba(255,46,126,.20), transparent 66%),
+        radial-gradient(720px 380px at 8% 6%, rgba(122,92,255,.12), transparent 66%),
+        linear-gradient(180deg,#160a2c 0%,#0b0718 42%,#0b0718 100%);
+    }
+  }
+  @media(max-width:760px){
+    .g6-band-row{font-size:clamp(2rem,10vw,3.4rem);letter-spacing:.01em}
+    .g6-band{margin-top:18px;padding-block:18px 0}
+  }
+</style>
+</head>
+<body>
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top"><span>GTA VI <b>· TR</b></span></a>
+    <nav class="nav-links">
+      <a href="#overall">İlerleme</a>
+      <a href="#sections">Bölümler</a>
+      <a href="#samples">Örnekler</a>
+      <a href="#roadmap">Yol Haritası</a>
+    </nav>
+    <span class="nav-updated">Son güncelleme: 26.11.2026 · 02:35</span>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-art" aria-hidden="true"><svg class="hero-illustration" viewBox="0 0 1600 760" preserveAspectRatio="xMidYMax slice">
+<defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#120a30"/><stop offset=".32" stop-color="#4b2386"/><stop offset=".58" stop-color="#e0337f"/><stop offset=".74" stop-color="#ff7a4d"/><stop offset=".86" stop-color="#ffc56e"/></linearGradient>
+<linearGradient id="sun" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff1b0"/><stop offset=".55" stop-color="#ffb05c"/><stop offset="1" stop-color="#ff3d7f"/></linearGradient>
+<radialGradient id="sunglow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ff5e9c" stop-opacity=".55"/><stop offset="1" stop-color="#ff5e9c" stop-opacity="0"/></radialGradient>
+<linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff7a8a"/><stop offset=".25" stop-color="#9b3a8f"/><stop offset="1" stop-color="#0d0822"/></linearGradient>
+<mask id="sunStripes"><rect width="1600" height="760" fill="#fff"/><rect x="900" y="452" width="500" height="6" fill="#000"/><rect x="900" y="474" width="500" height="8" fill="#000"/><rect x="900" y="498" width="500" height="10" fill="#000"/><rect x="900" y="524" width="500" height="12" fill="#000"/></mask>
+<symbol id="palm" viewBox="-200 -40 400 520" overflow="visible"><path d="M-7 0 C 2 140 22 300 48 470 L 70 470 C 42 300 20 140 7 0 Z"/><g><path d="M0 0 C 45 -34 110 -38 175 6 C 112 -14 50 -12 0 0 Z"/><path d="M0 0 C 40 -55 100 -85 160 -70 C 100 -60 45 -35 0 0 Z"/><path d="M0 0 C 20 -60 55 -105 100 -120 C 65 -90 30 -50 0 0 Z"/><path d="M0 0 C -45 -34 -110 -38 -175 6 C -112 -14 -50 -12 0 0 Z"/><path d="M0 0 C -40 -55 -100 -85 -160 -70 C -100 -60 -45 -35 0 0 Z"/><path d="M0 0 C -20 -60 -55 -105 -100 -120 C -65 -90 -30 -50 0 0 Z"/><path d="M0 0 C 50 -5 115 20 160 80 C 110 35 55 15 0 0 Z"/><path d="M0 0 C -50 -5 -115 20 -160 80 C -110 35 -55 15 0 0 Z"/></g></symbol>
+</defs>
+<rect width="1600" height="560" fill="url(#sky)"/>
+<g class="stars" fill="#fff"><circle cx="180" cy="80" r="1.7"/><circle class="s2" cx="420" cy="140" r="1.3"/><circle cx="640" cy="60" r="1.5"/><circle class="s3" cx="860" cy="120" r="1.2"/><circle class="s2" cx="1040" cy="50" r="1.6"/><circle cx="1330" cy="110" r="1.3"/><circle class="s3" cx="1500" cy="40" r="1.5"/><circle class="s2" cx="300" cy="210" r="1.1"/><circle cx="760" cy="200" r="1.2"/></g>
+<circle class="sun-halo" cx="1150" cy="440" r="320" fill="url(#sunglow)"/>
+<circle cx="1150" cy="440" r="178" id="sun-disk" fill="url(#sun)" mask="url(#sunStripes)"/>
+<g fill="#1c0d3a" opacity=".78"><path d="M0 560 V500 h40 v-30 h28 v40 h22 v-70 h34 v70 h18 v-44 h40 v44 h30 v-90 h26 v-18 h20 v108 h36 v-56 h44 v56 h22 v-34 h38 v34 h60 v-120 h14 v-14 h24 v134 h40 v-62 h30 v62 h70 v-40 h36 v40 h44 v-86 h28 v86 h56 v-30 h40 v30 h90 V560 Z"/></g>
+<g fill="#ffd27a" opacity=".55">
+  <rect x="108" y="454" width="4" height="8"/><rect x="116" y="468" width="4" height="8"/>
+  <rect x="210" y="472" width="4" height="10"/><rect x="218" y="490" width="4" height="8"/>
+  <rect x="330" y="512" width="4" height="8"/><rect x="462" y="446" width="4" height="12"/>
+  <rect x="470" y="466" width="4" height="10"/><rect x="478" y="488" width="4" height="10"/>
+  <rect x="652" y="484" width="4" height="9"/><rect x="660" y="500" width="4" height="9"/>
+</g>
+<rect y="555" width="1600" height="2.5" fill="#ff5ea8" opacity=".85"/>
+<rect y="556" width="1600" height="204" fill="url(#sea)"/>
+<g class="shimmer-sea" fill="#ffd38a" opacity=".78"><rect x="1010" y="574" width="280" height="4" rx="2"/><rect x="1040" y="592" width="220" height="4" rx="2"/><rect x="1070" y="612" width="160" height="3" rx="1.5"/><rect x="1095" y="632" width="110" height="3" rx="1.5"/></g>
+<g fill="#100824"><g class="palm-l"><use href="#palm" x="-60" y="250" width="420" height="560" transform="rotate(-6 150 520)"/><use href="#palm" x="120" y="330" width="300" height="420"/></g><g class="palm-r"><use href="#palm" x="1390" y="270" width="380" height="520" transform="rotate(7 1580 540)"/></g></g>
+<rect y="728" width="1600" height="32" fill="#100824"/></svg><div class="hero-scrim"></div></div>
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span>Canlı takip</p>
+      <h1>GTA VI Türkçe&nbsp;çeviri</h1>
+      <p class="answer" id="answer">Devam ediyor</p>
+      <p class="lede">Menü, arayüz ve görevler bitti; sıra konuşmalarda.</p>
+      <div class="hero-chips"><span>323.497 string</span><span>Türkçe</span><span>RPF9 / GXT</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap overall-wrap" id="overall">
+  <div class="card overall">
+    <div class="overall-head">
+      <div class="ov-main">
+        <p class="kicker">Genel ilerleme · ağırlıklı ortalama</p>
+        <div class="big-score"><span id="score">0</span><span class="pct">%</span></div>
+        <p class="ov-leader"><b>310.654</b> / 323.497 string çevrildi · <b>12.843</b> kaldı · karakter bazında <b>%96.03</b></p>
+      </div>
+      <div class="ov-stats">
+        <div class="ov-stat"><b>%100.00</b><small>UI / Menü / Görev</small></div>
+        <div class="ov-stat"><b>%94.79</b><small>Diyalog</small></div>
+        <div class="ov-stat"><b>257.393</b><small>Benzersiz metin</small></div>
+        <div class="ov-stat"><b>323.497</b><small>Toplam string</small></div>
+      </div>
+    </div>
+    <div class="mega">
+      <div class="mega-track"><div class="mega-fill js-fill" id="mega" style="--p:0%"></div><div class="mega-ticks"><i style="left:25%"></i><i style="left:50%"></i><i style="left:75%"></i></div><span class="mega-head" id="mega-head" style="--p:0%"></span></div>
+      <div class="mega-labels">
+        <div class="mega-label is-reached" style="left:0%"><b>0%</b><span class="dot"></span>Başlangıç</div><div class="mega-label is-reached" style="left:25%"><b>25%</b><span class="dot"></span>UI / Menü</div><div class="mega-label is-reached" style="left:50%"><b>50%</b><span class="dot"></span>Görevler</div><div class="mega-label is-reached" style="left:75%"><b>75%</b><span class="dot"></span>Diyalog</div><div class="mega-label is-next" style="left:100%"><b>100%</b><span class="dot"></span>Tamam</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="g6-band" aria-hidden="true"><div class="g6-band-row g6-band-a"><span>%96,03 TÜRKÇE ÇEVİRİ</span><span>%96,03 TÜRKÇE ÇEVİRİ</span><span>%96,03 TÜRKÇE ÇEVİRİ</span><span>%96,03 TÜRKÇE ÇEVİRİ</span><span>%96,03 TÜRKÇE ÇEVİRİ</span><span>%96,03 TÜRKÇE ÇEVİRİ</span><span>%96,03 TÜRKÇE ÇEVİRİ</span><span>%96,03 TÜRKÇE ÇEVİRİ</span></div><div class="g6-band-row g6-band-b"><span>%96,03 TÜRKÇE ÇEVİRİ</span><span>%96,03 TÜRKÇE ÇEVİRİ</span><span>%96,03 TÜRKÇE ÇEVİRİ</span><span>%96,03 TÜRKÇE ÇEVİRİ</span><span>%96,03 TÜRKÇE ÇEVİRİ</span><span>%96,03 TÜRKÇE ÇEVİRİ</span><span>%96,03 TÜRKÇE ÇEVİRİ</span><span>%96,03 TÜRKÇE ÇEVİRİ</span></div></div>
+
+<section class="wrap section" id="sections">
+  <div class="section-head">
+    <div>
+      <p class="kicker">Bölümler</p>
+      <h2>Nerede ne kadar?</h2>
+      <p class="sub">Oyun metni iki ana gruba ayrılıyor: arayüz/görev metinleri ve konuşma/altyazı metinleri.</p>
+    </div>
+  </div>
+  <div class="card sec-card">
+    <div class="sec-row">
+      <div class="sec-meta"><b>UI / Menü / HUD / Görev</b><span>%100.00 · 76.855 / 76.855 · ağırlık %23.76</span></div>
+      <div class="bar"><div class="bar-track"><div class="bar-fill js-fill" style="--p:0%" data-p="100.00"></div></div></div>
+    </div>
+    <div class="sec-row">
+      <div class="sec-meta"><b>Diyalog / Altyazı / Ambient</b><span>%94.79 · 233.799 / 246.642 · ağırlık %76.24</span></div>
+      <div class="bar"><div class="bar-track"><div class="bar-fill js-fill" style="--p:0%" data-p="94.79"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap section" id="samples">
+  <div class="section-head">
+    <div>
+      <p class="kicker">Vitrin</p>
+      <h2>Çeviriden örnekler</h2>
+      <p class="sub">Doğrudan oyun dosyalarından çekilen satırlar — renk ve tuş kodları korunarak çevrildi.</p>
+    </div>
+  </div>
+  <div class="sp-grid"><div class="sp-card"><span class="sp-cat">Görev Hedefi</span><p class="sp-en">Tell <em class="tok-o">Mattia</em> you failed to steal the key fob</p><p class="sp-tr"><em class="tok-o">Mattia</em>'ya anahtarlığı çalamadığını söyle</p></div><div class="sp-card"><span class="sp-cat">Arayüz / İpucu</span><p class="sp-en">Jason is injured. Depleting stamina impacts his accuracy.</p><p class="sp-tr">Jason yaralı. Dayanıklılığın tükenmesi nişan isabetini etkiler.</p></div><div class="sp-card"><span class="sp-cat">Görev Hedefi</span><p class="sp-en">Wait for Lucia to distract <em class="tok-o">Dardan</em></p><p class="sp-tr">Lucia'nın <em class="tok-o">Dardan</em>'ın dikkatini dağıtmasını bekle</p></div><div class="sp-card"><span class="sp-cat">Kontrol</span><p class="sp-en">Hold <kbd class="tok-k" title="~INPUT_INTERACT_LOCKON~">LT</kbd> to talk to anyone near you.</p><p class="sp-tr">Yakınındaki biriyle konuşmak için <kbd class="tok-k" title="~INPUT_INTERACT_LOCKON~">LT</kbd> tuşunu basılı tut.</p></div><div class="sp-card"><span class="sp-cat">Altyazı</span><p class="sp-en">That's the hotel over there. Triple homicide... They never found the ear.</p><p class="sp-tr">Şuradaki otel. Üçlü cinayet... Kulağını hiç bulamadılar.</p></div><div class="sp-card"><span class="sp-cat">Polis Telsizi</span><p class="sp-en">615, subject has a motorbike, repeat, subject has a motorbike.</p><p class="sp-tr">615, şüphelinin bir motosikleti var, tekrar ediyorum, şüphelinin bir motosikleti var.</p></div><div class="sp-card"><span class="sp-cat">Sosyal Medya</span><p class="sp-en">who ever this chick is mad annoying</p><p class="sp-tr">Bu kız her kimse, gerçekten çok sinir bozucu</p></div><div class="sp-card"><span class="sp-cat">Diyalog</span><p class="sp-en">If you have nothing to hide, you have nothing to worry about.</p><p class="sp-tr">Saklayacak bir şeyin yoksa endişelenecek bir şeyin de yok.</p></div></div>
+</section>
+
+<section class="wrap section" id="roadmap">
+  <div class="section-head"><div><p class="kicker">Durum</p><h2>Yol haritası</h2></div></div>
+  <div class="race">
+    <div class="effort is-top"><div class="e-rank">01</div><div class="e-main"><div class="e-top"><div class="e-title"><h3>Menü / UI / HUD / Görev</h3></div><div class="e-score"><b>100.00<span>%</span></b><small>76.855 / 76.855</small></div></div>
+      <p class="e-summary">Oyun içi arayüz ve görev metinleri tamamlandı.</p>
+      <div class="mini-bar"><i class="js-fill" style="--p:0%" data-p="100.00"></i></div>
+      <div class="tags"><span class="tag tag-ok">✓ Tamamlandı</span></div></div></div>
+    <div class="effort is-wip"><div class="e-rank">02</div><div class="e-main"><div class="e-top"><div class="e-title"><h3>Diyalog / Altyazı / Ambient</h3></div><div class="e-score"><b>94.79<span>%</span></b><small>233.799 / 246.642</small></div></div>
+      <p class="e-summary">Konuşmalar, altyazılar ve sokak diyalogları çevriliyor.</p>
+      <div class="mini-bar"><i class="js-fill" style="--p:0%" data-p="94.79"></i></div>
+      <div class="tags"><span class="tag tag-claim">◐ Devam ediyor</span></div></div></div>
+    <div class="effort is-wip"><div class="e-rank">03</div><div class="e-main"><div class="e-top"><div class="e-title"><h3>Kalite kontrolü</h3></div><div class="e-score"><b>✓</b><small>Tarandı</small></div></div>
+      <p class="e-summary">Otomatik tarama: <b>0 boş çeviri</b>, <b>0 bozuk tekrar</b>. <b>OpenVI</b> ile bağımsız çapraz doğrulama: <b>250.898 birebir eşleşme</b>, eksik İngilizce yok.</p>
+      <div class="tags"><span class="tag tag-claim">◐ İlk tarama yapıldı</span><span class="tag">○ Derin inceleme sürüyor</span></div></div></div>
+    <div class="effort"><div class="e-rank">04</div><div class="e-main"><div class="e-top"><div class="e-title"><h3>Oyuna uygulama (patch)</h3></div><div class="e-score"><b>—</b><small>TOC anahtarı</small></div></div>
+      <p class="e-summary">RPF9 arşivine geri yazma. Şifreli TOC anahtarı gerektiği için beklemede.</p>
+      <div class="tags"><span class="tag">○ Bekliyor</span></div></div></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div><a class="brand brand-sm" href="#top"><span>GTA VI <b>· TR</b></span></a>
+      <p>Hayran projesi. Rockstar Games, Take-Two veya Microsoft ile bağlantılı değildir. Oyun dosyası, anahtar veya çalıştırılabilir dosya barındırılmaz.</p></div>
+    <div class="footer-meta"><p>Son güncelleme: 26.11.2026 · 02:35</p></div>
+  </div>
+</footer>
+<script>
+(function(){
+  var target = 96.03;
+  var mega = document.getElementById('mega');
+  var head = document.getElementById('mega-head');
+  var score = document.getElementById('score');
+  document.querySelectorAll('.js-fill[data-p]').forEach(function(el){
+    el.style.setProperty('--p', '0%');
+    requestAnimationFrame(function(){ setTimeout(function(){ el.style.setProperty('--p', el.getAttribute('data-p')+'%'); }, 120); });
+  });
+  requestAnimationFrame(function(){ setTimeout(function(){
+    mega.style.setProperty('--p', target+'%');
+    if (head) head.style.setProperty('--p', target+'%');
+  }, 120); });
+  var cur = 0;
+  function step(){
+    cur += Math.max(0.4, (target - cur) * 0.08);
+    if (cur >= target) cur = target;
+    score.textContent = cur.toFixed(2);
+    if (cur < target) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function(){ nav.classList.toggle('is-scrolled', window.scrollY > 8); }, {passive:true});
+
+  // Yukarıdan yumuşak giriş + mobilde canlı his
+  var rev = document.querySelectorAll('.section, .effort, .sp-card');
+  rev.forEach(function(el, i){
+    el.classList.add('reveal');
+    el.style.setProperty('--i', i % 6);
+  });
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, {threshold: 0.1, rootMargin: '0px 0px -6% 0px'});
+    rev.forEach(function(el){ io.observe(el); });
+  } else {
+    rev.forEach(function(el){ el.classList.add('in'); });
+  }
+  // Şerit: animation-timeline desteklenmiyorsa scroll ile sürükle
+  var band = document.querySelector('.g6-band');
+  if (band && !(window.CSS && CSS.supports && CSS.supports('animation-timeline: view()'))) {
+    var rA = band.querySelector('.g6-band-a');
+    var rB = band.querySelector('.g6-band-b');
+    var syncBand = function(){
+      var r = band.getBoundingClientRect();
+      var vh = window.innerHeight || 800;
+      var p = (vh - r.top) / (vh + r.height);
+      p = Math.max(0, Math.min(1, p));
+      if (rA) rA.style.transform = 'translate(' + (2 - 30 * p).toFixed(2) + '%)';
+      if (rB) rB.style.transform = 'translate(' + (-40 + 32 * p).toFixed(2) + '%)';
+    };
+    window.addEventListener('scroll', syncBand, {passive:true});
+    window.addEventListener('resize', syncBand);
+    syncBand();
+  }
+})();
+</script>
+</body>
+</html>
